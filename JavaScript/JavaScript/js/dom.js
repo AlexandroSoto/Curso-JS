@@ -128,7 +128,7 @@ $whatIsDOM.outerHTML = text; //reconoce elementos html  */
 
 
 //---------------------------   DOM TRAVERSING: RECORRIENDO EL DOM -----------------------------
-        /*
+/*
 const $cards = document.querySelector(".cards");
 console.log($cards);
 console.log($cards.children);
@@ -142,7 +142,7 @@ console.log($cards.children[3].closest("section"));
 */
 
 //----------------------- DOM: Creando Elementos y Fragmentos --------------------------
-/*
+
 const $figure = document.createElement("figure"),
  $img = document.createElement("img"),
  $figcaption = document.createElement("figcaption"),
@@ -213,114 +213,4 @@ meses.forEach(el => {
 document.write("<h3>Meses de año</h3>")
 $ul3.appendChild($fragment);
 document.body.appendChild($ul3);
-*/ 
 
-//-------------------------   DOM: Templates HTML ------------------------------------
-/*
-const $cards = document.querySelector(".card"),
- $template = document.getElementById("template-card").content,
- $fragment = document.createDocumentFragment(),
- cardContent = [
-        {
-                title:"Tecnologia",
-                img:"https://placeimg.com/200/200/tech",
-        },
-        {
-                title:"Animales",
-                img:"https://placeimg.com/200/200/animals",
-        },
-        {
-                title:"Arquitectura",
-                img:"https://placeimg.com/200/200/arch",
-        },
-        {
-                title:"Gente",
-                img:"https://placeimg.com/200/200/people",
-        },
-        {
-                title:"Naturaleza",
-                img:"https://placeimg.com/200/200/nature",
-        },
- ];
-
-cardContent.forEach(el=>{
-  $template.querySelector("img").setAttribute("src",el.img);
-  $template.querySelector("img").setAttribute("alt",el.title);
-  $template.querySelector("figcaption").textContent = el.title;
-
-  let $clone = document.importNode($template,true);
-  $fragment.appendChild($clone);
-});
-
-$cards.appendChild($fragment);
-*/
-
-
-//---------------------------DOM Modificando Elementos --------------------------
-/*
-const $cards = document.querySelector(".cards"),
- $newCard = document.createElement("figure"),
- $cloneCards = $cards.cloneNode(true);
-
-$newCard.innerHTML = `
-<img src="https://placeimg.com/200/200/any" alr="Any">
-<figcaption>Any</figcaption>
-`;
-
-$newCard.classList.add("card");
-
-//$cards.replaceChild($newCard,$cards.children[2]);
-//$cards.removeChild($cards.lastElementChild);
-//$cards.insertBefore($newCard,$cards.firstElementChild);
-
-document.body.appendChild($cloneCards);
-*/ 
-
-//----------------------- DOM: Modificando Elementos (Cool Style)-------------------------
-/*
-const $cards = document.querySelector(".cards"),
- $newCard = document.createElement("figure");
-
-let $contentCard  = `
-<img src="https://placeimg.com/200/200/any" alr="Any">
-<figcaption></figcaption>
-`;
-$newCard.classList.add("card");
-
-
-$newCard.insertAdjacentHTML("beforeend",$contentCard);
-$newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any");
-//$cards.insertAdjacentElement("afterbegin",$newCard);
-
-$cards.prepend($newCard);
-$cards.append($newCard);
-$cards.before($newCard);
-$cards.after($newCard);
-*/ 
-
-//-------------------- DOM: Maneajadores de Eventos --------------------------------
-
-function holaMundo(){
-  alert("Hola Mundo");
-  console.log(event);
-}
-
-const $eventoSemantico = document.getElementById("evento-semantico");
-
-$eventoSemantico.onclick = holaMundo;
-$eventoSemantico.onclick = function (e){
-  alert("hola mundo manejador de eventos semantico");
-  console.log(e);
-  console.log(event);
-}
-
-const $eventoMultiple = document.getElementById("evento-multiple");
-
-$eventoMultiple.addEventListener("click",holaMundo);
-$eventoMultiple.addEventListener("click",(e)=>{
-  alert("Hola manejador de eventos multiples");
-  console.log(e);
-  console.log(e.type);
-  console.log(e.target);
-  console.log(e);
-})
